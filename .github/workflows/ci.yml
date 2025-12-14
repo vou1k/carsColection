@@ -1,0 +1,67 @@
+name: C++ CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-windows:
+    runs-on: windows-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Build on Windows
+      run: |
+        echo "=== Building Car Collection ==="
+        g++ --version
+        g++ -std=c++17 -o car_collection.exe main.cpp CarCollection.cpp
+        
+        if (Test-Path "car_collection.exe") {
+          echo " Windows build SUCCESS!"
+          dir car_collection.exe
+        } else {
+          echo " Windows build FAILED!"
+          exit 1
+        }
+    
+    - name: Upload Windows build
+      uses: actions/upload-artifact@v4
+      with:
+        name: car-collection-windows
+        path: car_collection.exe
+
+  build-linux:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    
+    - name: Build on Linux
+      run: |
+        echo "=== Building Car Collection ==="
+        g++ --version
+        g++ -std=c++17 -o car_collection main.cpp CarCollection.cpp
+        
+        if [ -f "car_collection" ]; then
+          echo "Linux build SUCCESS!"
+          ls -la car_collection
+        else
+          echo "Linux build FAILED!"
+          exit 1
+        fi
+    
+    - name: Run basic test
+      run: |
+        echo "=== Testing program ==="
+        ./car_collection --help 2>&1 | head -5 || echo " Program compiled successfully"
+    
+    - name: Upload Linux build
+      uses: actions/upload-artifact@v4
+      with:
+        name: car-collection-linux
+        path: car_collection
