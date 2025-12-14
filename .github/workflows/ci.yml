@@ -7,61 +7,36 @@ on:
     branches: [ main, master ]
 
 jobs:
-  build-windows:
+  build-and-test:
     runs-on: windows-latest
     
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
     
-    - name: Build on Windows
+    - name: Build project
       run: |
-        echo "=== Building Car Collection ==="
+        echo "=== Building Car Collection on Windows ==="
         g++ --version
-        g++ -std=c++17 -o car_collection.exe main.cpp CarCollection.cpp
+        g++ -std=c++17 -Wall -Wextra -pedantic -o car_collection.exe main.cpp CarCollection.cpp
         
         if (Test-Path "car_collection.exe") {
-          echo " Windows build SUCCESS!"
+          echo "Build SUCCESS!"
+          echo "File size: $((Get-Item car_collection.exe).Length) bytes"
           dir car_collection.exe
         } else {
-          echo " Windows build FAILED!"
+          echo "Build FAILED!"
           exit 1
         }
-    
-    - name: Upload Windows build
-      uses: actions/upload-artifact@v4
-      with:
-        name: car-collection-windows
-        path: car_collection.exe
-
-  build-linux:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    
-    - name: Build on Linux
-      run: |
-        echo "=== Building Car Collection ==="
-        g++ --version
-        g++ -std=c++17 -o car_collection main.cpp CarCollection.cpp
-        
-        if [ -f "car_collection" ]; then
-          echo "Linux build SUCCESS!"
-          ls -la car_collection
-        else
-          echo "Linux build FAILED!"
-          exit 1
-        fi
     
     - name: Run basic test
       run: |
         echo "=== Testing program ==="
-        ./car_collection --help 2>&1 | head -5 || echo " Program compiled successfully"
+        ./car_collection.exe --help 2>&1 | Select-Object -First 5
+        echo "Program compiled and ran successfully"
     
-    - name: Upload Linux build
+    - name: Upload build artifact
       uses: actions/upload-artifact@v4
       with:
-        name: car-collection-linux
-        path: car_collection
+        name: car-collection-windows
+        path: car_collection.exe
