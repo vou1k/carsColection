@@ -1,0 +1,21 @@
+Manufacturer;Model;Year;Price;Type;Condition;Scale;Color;LimitedEdition
+Ferrari;F40;1987;15000.00;Scale Model;Mint;1:18;Red;Yes
+Porsche;911 Carrera;1973;12000.00;Die Cast;Excellent;1:24;Silver;No
+Lamborghini;Countach;1974;18000.00;Radio Controlled;Good;1:32;White;Yes
+Ford;Mustang;1967;8500.00;Scale Model;Excellent;1:18;Blue;No
+BMW;M3;1990;9500.00;Electric Model;Good;1:24;Black;No
+Chevrolet;Corvette;1963;22000.00;Custom Build;Mint;1:12;Red;Yes
+Mercedes-Benz;300SL;1954;25000.00;Scale Model;Mint;1:18;Silver;Yes
+Toyota;Supra;1993;11000.00;Die Cast;Fair;1:32;Orange;No
+Nissan;Skyline GT-R;1989;14000.00;Radio Controlled;Excellent;1:24;Blue;Yes
+Audi;Quattro;1982;13000.00;Scale Model;Good;1:18;White;No
+Mazda;RX-7;1978;9000.00;Electric Model;Fair;1:32;Red;No
+Volkswagen;Beetle;1960;6500.00;Custom Build;Poor;1:12;Yellow;No
+Jaguar;E-Type;1961;30000.00;Scale Model;Mint;1:18;British Racing Green;Yes
+Dodge;Charger;1969;16000.00;Die Cast;Excellent;1:24;Green;No
+Alfa Romeo;Giulia;1962;17000.00;Radio Controlled;Good;1:32;Red;Yes
+McLaren;F1;1992;35000.00;Scale Model;Mint;1:12;Orange;Yes
+Honda;NSX;1990;12500.00;Electric Model;Excellent;1:24;Red;No
+Subaru;Impreza WRX STI;1994;11500.00;Custom Build;Good;1:18;Blue;Yes
+Mitsubishi;Lancer Evolution;1992;10500.00;Scale Model;Fair;1:32;White;No
+Bugatti;Veyron;2005;50000.00;Die Cast;Mint;1:18;Black;Yes
